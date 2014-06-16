@@ -2,3 +2,7 @@ source 'https://rubygems.org'
 
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
+group :development, :test do
+  gem "rspec"
+end
+gem 'database_cleaner'
