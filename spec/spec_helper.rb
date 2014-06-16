@@ -7,6 +7,7 @@ ENV["RACK_ENV"] = 'test' # because we need to know what database to work with
 # The environment determines what database to use.
 require 'server'
 require 'database_cleaner'
+require 'capybara/rspec'
 
 RSpec.configure do |config|
 

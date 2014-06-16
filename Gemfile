@@ -6,3 +6,4 @@ group :development, :test do
   gem "rspec"
 end
 gem 'database_cleaner'
+gem 'capybara'
