@@ -7,3 +7,4 @@ group :development, :test do
 end
 gem 'database_cleaner'
 gem 'capybara'
+gem 'sinatra'
