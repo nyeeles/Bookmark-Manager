@@ -54,3 +54,4 @@ post '/users' do
 	session[:user_id] = user.id
 	redirect to('/')
 end
+
