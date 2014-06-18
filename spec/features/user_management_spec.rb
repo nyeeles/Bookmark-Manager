@@ -69,5 +69,17 @@ feature "User signs up" do
     lambda { sign_up }.should change(User, :count).by(0)
     expect(page).to have_content("This email is already taken")
   end
-
 end
+
+feature "User requests for password reset" do
+  before(:each) do
+    User.create(:email => "test@test.com", :password => 'test', :password_confirmation => 'test')
+  end
+
+  scenario 'when on the log in page' do
+    visit('/sessions/new')
+    click_link 'Forgot password'
+    expect(page).to have_content "Enter your email"
+  end
+end
+

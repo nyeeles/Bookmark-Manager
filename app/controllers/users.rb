@@ -27,3 +27,7 @@ post '/users' do
     erb :"users/new"
   end
 end
+
+get '/users/reset_password' do
+  erb :"users/reset_password"
+end
