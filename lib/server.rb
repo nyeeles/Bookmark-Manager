@@ -6,7 +6,6 @@ require './lib/tag'
 require './lib/user'
 require_relative '../helpers/application'
 require_relative '../data_mapper_setup'
-
 set :views, Proc.new { File.join(root,'..','views') }
 
 enable :sessions
@@ -75,27 +74,13 @@ post '/sessions' do
 		session[:user_id] = user.id
 		redirect to('/')
 	else
-		flash[:errors] = ["The email or password is incorrect"]
+		flash[:errors] = "The email or password is incorrect"
 		erb :"sessions/new"
 	end
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+delete '/sessions' do
+	flash[:notice] = "Good bye!"
+	session[:user_id] = nil
+	redirect to('/')
+end
