@@ -81,5 +81,11 @@ feature "User requests for password reset" do
     click_link 'Forgot password'
     expect(page).to have_content "Enter your email"
   end
+
+  scenario 'when submitting for a new password' do
+    visit('/users/reset_password')
+    click_button 'Gimme my password!'
+    expect(page).to have_content 'Please check your email for a new password'
+  end
 end
 

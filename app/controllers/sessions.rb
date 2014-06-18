@@ -19,3 +19,8 @@ delete '/sessions' do
   session[:user_id] = nil
   redirect to('/')
 end
+
+post '/sessions/new' do
+  flash[:notice] = "Please check your email for a new password"
+  redirect to('/sessions/new')
+end
