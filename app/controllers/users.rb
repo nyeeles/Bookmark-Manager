@@ -31,8 +31,3 @@ end
 get '/users/reset_password' do
   erb :"users/reset_password"
 end
-
-
-
-__END__
-flash[:notice] = "Please check your email for a new password"

@@ -10,6 +10,8 @@ class User
   # It's Text and not String because String holds 50 characters by default
   # and it's not enough for the hash and salt
   property :password_digest, Text
+  property :password_token, Text
+  property :password_token_timestamp, DateTime
 
   attr_reader :password
   attr_accessor :password_confirmation

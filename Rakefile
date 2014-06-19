@@ -1,5 +1,5 @@
 require 'data_mapper'
-require 'data_mapper_setup'
+require './app/data_mapper_setup'
 
 task :auto_upgrade do
 	# auto_upgrade makes non-destructive changes. 
@@ -12,7 +12,7 @@ task :auto_upgrade do
  end
 
 task :auto_migrate do
-	# To force the creation of all tables as they are 
+  # To force the creation of all tables as they are 
   # described in your models, even if this
   # may lead to data loss, use auto_migrate:
   DataMapper.auto_migrate!
