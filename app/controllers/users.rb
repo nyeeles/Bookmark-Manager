@@ -31,3 +31,30 @@ end
 get '/users/reset_password' do
   erb :"users/reset_password"
 end
+
+get '/users/reset_password/:token' do
+  user = User.first(:password_token => params[:token])
+
+  if user.password_token_timestamp + (60*60) > DateTime.now
+    redirect to ('/users/set_password')
+  else
+    flash.now[:notice] = "The password token has expired"
+    erb :"users/reset_password"
+  end
+end
+
+get '/users/set_password' do
+  erb :"users/set_password"
+end
+
+
+# get '/users/set_password/:token' do
+#   user = User.first(:password_token => params[:token])
+
+#   if user.password_token_timestamp + (60+60) > DateTime.now
+#     redirect to ('/users/set_password')
+#   else
+#     flash.now[:notice] = "The password token has expired"
+#     erb :"users/reset_password"
+#   end
+# end

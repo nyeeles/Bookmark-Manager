@@ -86,13 +86,21 @@ feature "User requests for password reset" do
     visit('/users/reset_password')
     fill_in('email', :with => 'test@test.com')
     expect(User.first.password_token).to be nil
+    expect(User.first.password_token_timestamp).to be nil
     click_button 'Gimme my password!'
     expect(page).to have_content 'Please check your email for a new password'
     expect(User.first.password_token).not_to be nil
+    expect(User.first.password_token_timestamp).not_to be nil
+
   end
 
-
-
-
+  scenario 'once user clicks on email' do
+    visit('/users/reset_password')
+    fill_in('email', :with => 'test@test.com')
+    click_button 'Gimme my password!'
+    token = User.first.password_token
+    visit("/users/reset_password/#{token}")
+    expect(page).to have_content "Enter your new password"
+  end
 end
 
