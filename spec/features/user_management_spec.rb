@@ -101,6 +101,12 @@ feature "User requests for password reset" do
     token = User.first.password_token
     visit("/users/reset_password/#{token}")
     expect(page).to have_content "Enter your new password"
+    fill_in('password', :with => 'test')
+    fill_in('confirm_password', :with => 'test')
+    click_button 'Reset password'
+    expect(token).to be nil
+    # expect(page).to have_content "success"
   end
+
 end
 
